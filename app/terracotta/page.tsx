@@ -73,6 +73,21 @@ export default function TerracottaPage() {
 
   return (
     <div className="garden-shell overflow-hidden">
+      <div 
+        className="fixed inset-0 -z-[5]"
+        style={{
+          background: `
+            url("/images/ui/garden-pattern.svg"),
+            radial-gradient(circle at top left, rgba(168, 187, 162, 0.42), transparent 30%),
+            radial-gradient(circle at top right, rgba(200, 107, 74, 0.12), transparent 22%),
+            linear-gradient(180deg, rgba(251, 248, 240, 0.74) 0%, rgba(248, 245, 236, 0.62) 38%, rgba(242, 237, 224, 0.74) 100%),
+            url("/images/ui/TerracottaAchtergrond.png")
+          `,
+          backgroundRepeat: 'repeat, no-repeat, no-repeat, no-repeat, no-repeat',
+          backgroundSize: '920px 920px, auto, auto, auto, cover',
+          backgroundPosition: '0 0, top left, top right, top, center',
+        }}
+      />
       {/* Hero Section */}
       <section className="section-container pb-10 pt-10 md:pb-14 lg:pt-12">
         <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
