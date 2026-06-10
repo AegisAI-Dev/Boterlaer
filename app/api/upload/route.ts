@@ -5,7 +5,7 @@ import { existsSync } from "fs";
 import { requireAuth } from "@/lib/middleware";
 
 // Configure route to accept large file uploads (up to 10GB)
-export const maxDuration = 600; // 10 minutes timeout for large uploads
+export const maxDuration = 60; // Vercel hobby plan max is 60 (or up to 300 depending on exact plan)
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic'; // Disable static optimization
 
