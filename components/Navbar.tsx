@@ -30,7 +30,7 @@ const Navbar = () => {
                 src="/images/ui/bannericon2-cropped.png"
                 alt="Den Boterlaer banner icoon"
                 fill
-                className="object-cover scale-[1.6]"
+                className="object-cover"
                 sizes="48px"
                 priority
               />
