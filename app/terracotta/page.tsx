@@ -13,26 +13,22 @@ export default function TerracottaPage() {
   const potCategories = [
     {
       title: "Kleine Potten",
-      description: "Perfect voor kamerplanten en kleine plantjes. Van 10cm tot 20cm diameter.",
-      icon: "🪴",
+      description: "Perfect voor kamerplanten en kleine plantjes.",
       sizes: ["10cm", "15cm", "20cm"],
     },
     {
-      title: "Middelgrote Potten",
-      description: "Ideaal voor middelgrote planten en struiken. Van 25cm tot 40cm diameter.",
-      icon: "🌿",
+      title: "Middelgrote",
+      description: "Ideaal voor middelgrote planten en struiken.",
       sizes: ["25cm", "30cm", "35cm", "40cm"],
     },
     {
       title: "Grote Potten",
-      description: "Voor grote planten en bomen. Van 45cm tot 80cm diameter.",
-      icon: "🌳",
+      description: "Voor grote planten en bomen.",
       sizes: ["45cm", "50cm", "60cm", "80cm"],
     },
     {
       title: "Speciale Vormen",
       description: "Unieke vormen en designs voor bijzondere planten.",
-      icon: "✨",
       sizes: ["Verschillende maten"],
     },
   ];
@@ -41,22 +37,18 @@ export default function TerracottaPage() {
     {
       title: "Natuurlijk Materiaal",
       description: "Terracotta is een natuurlijk, poreus materiaal dat ademt en overtollig water afvoert.",
-      icon: "🌍",
     },
     {
       title: "Perfect voor Planten",
       description: "De poreuze structuur helpt wortelrot te voorkomen en zorgt voor een gezonde groei.",
-      icon: "🌱",
     },
     {
       title: "Tijdloos Design",
       description: "Terracotta potten hebben een warme, tijdloze uitstraling die bij elke tuinstijl past.",
-      icon: "⏳",
     },
     {
       title: "Duurzaam",
       description: "Goed onderhouden terracotta potten gaan jarenlang mee en worden alleen mooier met de tijd.",
-      icon: "♻️",
     },
   ];
 
@@ -67,149 +59,145 @@ export default function TerracottaPage() {
     "Verplaats grote potten voorzichtig om breuk te voorkomen",
   ];
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-100 via-amber-50 to-yellow-50">
-      {/* Hero Section - Terracotta Colors */}
-      <section 
-        className="relative h-[400px] md:h-[500px] flex items-center justify-center text-white overflow-hidden"
-        style={{
-          background: 'linear-gradient(135deg, #d2691e 0%, #cd853f 25%, #daa520 50%, #b8860b 75%, #8b4513 100%)',
-          backgroundAttachment: 'fixed'
-        }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-br from-orange-900/90 via-orange-800/80 to-amber-900/90 z-10"></div>
-        <div className="absolute inset-0 bg-[url('/images/gallery/Schoonheid van de natuur.png')] bg-cover bg-center opacity-20 z-0"></div>
-        
-        <div className="relative z-20 text-center px-4 max-w-4xl">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight drop-shadow-2xl">
-            Terracotta Potten
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 text-orange-50 max-w-2xl mx-auto drop-shadow-lg">
-            Warme, natuurlijke potten die perfect passen bij elke plant. 
-            Ontdek onze collectie terracotta potten in verschillende maten en vormen.
-          </p>
-        </div>
-      </section>
+  const galleryImages = [
+    'Terracotta Masoni 002  - Copy.jpg',
+    'Terracotta Masoni 003  - Copy.jpg', 
+    'Terracotta Masoni 004  - Copy.jpg',
+    'Terracotta Masoni 005  - Copy.jpg',
+    'Terracotta Masoni 006  - Copy.jpg',
+    'Terracotta Masoni 007  - Copy.jpg',
+    'Terracotta Masoni 008  - Copy.jpg',
+    'Terracotta Masoni 009  - Copy.jpg',
+    'Terracotta Masoni 010  - Copy.jpg'
+  ];
 
-      {/* Video Section - Framed */}
-      <section className="section-container bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50">
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-white rounded-2xl shadow-2xl overflow-hidden border-4 border-orange-200">
-            <div className="p-6 bg-gradient-to-r from-orange-600 to-amber-600 text-white">
-              <h2 className="text-2xl font-bold text-center">Terracotta Video</h2>
+  return (
+    <div className="garden-shell overflow-hidden">
+      {/* Hero Section */}
+      <section className="section-container pb-10 pt-10 md:pb-14 lg:pt-12">
+        <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+          <div className="space-y-8 lg:sticky lg:top-32">
+            <div>
+              <p className="eyebrow !text-secondary-600 before:!bg-secondary-600">Natuurlijk materiaal</p>
+              <h1 className="mt-6 max-w-3xl font-display text-5xl leading-[0.95] text-secondary-900 md:text-7xl lg:text-[5.5rem]">
+                Terracotta: De warme aarding van de tuin.
+              </h1>
+              <p className="prose-custom mt-6 max-w-2xl !text-secondary-800">
+                Terracotta, wat letterlijk "gebakken aarde" betekent, is een van de oudste 
+                materialen die door de mensheid wordt gebruikt. Deze warme, aardse kleur en 
+                natuurlijke textuur maken onze terracotta potten perfect voor elke plant.
+              </p>
             </div>
-            <div className="aspect-video">
-              <VideoPlayer category="terracotta" />
+
+            <div className="botanical-panel rounded-[2rem] p-6 !border-secondary-200">
+              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-secondary-600">
+                Vakmanschap
+              </p>
+              <p className="mt-3 text-base leading-8 text-secondary-900">
+                Onze collectie terracotta potten combineert traditioneel vakmanschap met 
+                moderne functionaliteit. Elke pot is zorgvuldig gekozen om zowel esthetisch 
+                als praktisch te zijn voor uw planten.
+              </p>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* Introduction Section */}
-      <section className="section-container bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-orange-900">
-            Over Terracotta
-          </h2>
-          <div className="prose prose-lg max-w-none text-orange-800 space-y-4">
-            <p>
-              Terracotta, wat letterlijk "gebakken aarde" betekent, is een van de oudste 
-              materialen die door de mensheid wordt gebruikt. Deze warme, aardse kleur en 
-              natuurlijke textuur maken terracotta potten perfect voor elke tuin of 
-              binnenshuis.
-            </p>
-            <p>
-              Onze collectie terracotta potten combineert traditioneel vakmanschap met 
-              moderne functionaliteit. Elke pot is zorgvuldig gekozen om zowel esthetisch 
-              als praktisch te zijn voor uw planten.
-            </p>
+          {/* Video Panel */}
+          <div className="paper-panel rounded-[2.5rem] p-5 sm:p-7 !border-secondary-200">
+            <div className="mb-6">
+              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-secondary-600">
+                Video Collectie
+              </p>
+              <h2 className="mt-3 font-display text-3xl text-secondary-900">
+                Terracotta in beeld
+              </h2>
+            </div>
+            <div className="overflow-hidden rounded-2xl shadow-paper">
+              <div className="aspect-video w-full bg-secondary-50">
+                <VideoPlayer category="terracotta" />
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Categories Section */}
-      <section className="section-container bg-gradient-to-br from-orange-100/80 via-amber-100/70 to-yellow-100/80">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-orange-900">
-            Onze Collectie
-          </h2>
-          <p className="text-xl text-orange-800 max-w-2xl mx-auto">
-            Van kleine potjes tot grote plantenbakken - voor elke plant de perfecte pot
-          </p>
-        </div>
+      <section className="section-container py-8 md:py-10">
+        <div className="paper-panel rounded-[2.5rem] px-6 py-8 md:px-8 md:py-10 !border-secondary-200">
+          <div className="mb-8 flex flex-col gap-4 border-b border-secondary-200/50 pb-6">
+            <p className="eyebrow !text-secondary-600 before:!bg-secondary-600">Onze Collectie</p>
+            <h2 className="mt-2 font-display text-4xl text-secondary-900">
+              Voor elke plant de perfecte pot.
+            </h2>
+          </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {potCategories.map((category, index) => (
-            <div
-              key={index}
-              className="bg-gradient-to-br from-orange-50 to-amber-50 rounded-2xl p-8 shadow-xl border-2 border-orange-200 hover:border-orange-400 transition-all duration-300 hover:scale-105"
-            >
-              <div className="text-6xl mb-4 text-center">{category.icon}</div>
-              <h3 className="text-2xl font-bold text-orange-900 mb-3 text-center">
-                {category.title}
-              </h3>
-              <p className="text-orange-800 mb-4 text-center leading-relaxed">
-                {category.description}
-              </p>
-              <div className="flex flex-wrap gap-2 justify-center">
-                {category.sizes.map((size, sizeIndex) => (
-                  <span
-                    key={sizeIndex}
-                    className="px-4 py-2 bg-orange-200 text-orange-900 rounded-full text-sm font-medium"
-                  >
-                    {size}
-                  </span>
-                ))}
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            {potCategories.map((category) => (
+              <div
+                key={category.title}
+                className="botanical-panel rounded-[1.75rem] p-5 hover:-translate-y-1 hover:bg-secondary-50/50 !border-secondary-200/60"
+              >
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-secondary-600">
+                  Formaat
+                </p>
+                <h3 className="mt-6 font-display text-2xl text-secondary-900">
+                  {category.title}
+                </h3>
+                <p className="mt-3 text-sm leading-7 text-secondary-800">
+                  {category.description}
+                </p>
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {category.sizes.map((size, idx) => (
+                    <span
+                      key={idx}
+                      className="inline-flex rounded-full bg-secondary-100 px-3 py-1 text-xs font-medium text-secondary-800"
+                    >
+                      {size}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Benefits Section */}
-      <section className="section-container bg-gradient-to-r from-orange-200/70 via-amber-200/80 to-yellow-200/70">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-orange-900">
-            Waarom Terracotta?
-          </h2>
-          <p className="text-xl text-orange-800 max-w-2xl mx-auto">
-            De voordelen van terracotta potten voor uw planten
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {benefits.map((benefit, index) => (
-            <div
-              key={index}
-              className="bg-white/90 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border-2 border-orange-200"
-            >
-              <div className="text-5xl mb-4 text-center">{benefit.icon}</div>
-              <h3 className="text-xl font-bold text-orange-900 mb-3 text-center">
-                {benefit.title}
-              </h3>
-              <p className="text-orange-800 text-center leading-relaxed">
-                {benefit.description}
-              </p>
+      {/* Benefits and Care Tips */}
+      <section className="section-container py-8 md:py-10">
+        <div className="grid gap-8 lg:grid-cols-[1fr_1fr]">
+          <div className="space-y-6">
+            <div>
+              <p className="eyebrow !text-secondary-600 before:!bg-secondary-600">Waarom Terracotta?</p>
+              <h2 className="mt-5 font-display text-4xl text-secondary-900 md:text-5xl">
+                Natuurlijke voordelen
+              </h2>
             </div>
-          ))}
-        </div>
-      </section>
+            
+            <div className="grid gap-4 sm:grid-cols-2">
+              {benefits.map((benefit, index) => (
+                <div key={index} className="botanical-panel rounded-[1.75rem] p-5 !border-secondary-200">
+                  <h3 className="font-display text-xl text-secondary-900">
+                    {benefit.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-7 text-secondary-800">
+                    {benefit.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
 
-      {/* Care Tips Section */}
-      <section className="section-container bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50">
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-gradient-to-br from-orange-100 to-amber-100 rounded-2xl p-8 shadow-xl border-2 border-orange-300">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-orange-900 text-center">
+          <div className="botanical-panel rounded-[2.5rem] p-6 md:p-8 !bg-secondary-50/80 !border-secondary-200">
+            <p className="eyebrow !text-secondary-600 before:!bg-secondary-600">Notities van de tuinier</p>
+            <h2 className="mt-5 font-display text-4xl text-secondary-900">
               Verzorgingstips
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="mt-8 space-y-4">
               {careTips.map((tip, index) => (
-                <div
-                  key={index}
-                  className="flex items-start space-x-3 bg-white/70 rounded-lg p-4 border border-orange-200"
-                >
-                  <span className="text-2xl text-orange-600">✓</span>
-                  <p className="text-orange-900 leading-relaxed">{tip}</p>
+                <div key={index} className="flex items-start gap-4 rounded-2xl bg-white/60 p-4 shadow-sm border border-secondary-100">
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-secondary-200 text-xs font-bold text-secondary-800">
+                    {index + 1}
+                  </span>
+                  <p className="text-sm leading-6 text-secondary-900">{tip}</p>
                 </div>
               ))}
             </div>
@@ -217,72 +205,61 @@ export default function TerracottaPage() {
         </div>
       </section>
 
-      {/* Gallery/Image Section */}
-      <section className="section-container bg-gradient-to-br from-orange-100/80 via-amber-100/70 to-yellow-100/80">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-orange-900">
-            Terracotta in de Tuin
-          </h2>
-          <p className="text-xl text-orange-800 max-w-2xl mx-auto">
-            Zie hoe terracotta potten perfect passen in elke tuin
-          </p>
-        </div>
+      {/* Gallery Section */}
+      <section className="section-container py-8 md:py-10">
+        <div className="paper-panel rounded-[2.5rem] px-6 py-8 md:px-8 md:py-10 !border-secondary-200">
+          <div className="mb-8 text-center">
+            <h2 className="font-display text-4xl text-secondary-900">
+              Terracotta in de Tuin
+            </h2>
+            <p className="mt-4 text-secondary-800">Zie hoe terracotta potten perfect passen in elke tuin</p>
+          </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {[
-            'Terracotta Masoni 002  - Copy.jpg',
-            'Terracotta Masoni 003  - Copy.jpg', 
-            'Terracotta Masoni 004  - Copy.jpg',
-            'Terracotta Masoni 005  - Copy.jpg',
-            'Terracotta Masoni 006  - Copy.jpg',
-            'Terracotta Masoni 007  - Copy.jpg',
-            'Terracotta Masoni 008  - Copy.jpg',
-            'Terracotta Masoni 009  - Copy.jpg',
-            'Terracotta Masoni 010  - Copy.jpg'
-          ].map((filename, index) => (
-            <div
-              key={index}
-              className="relative h-[300px] rounded-xl overflow-hidden shadow-xl border-2 border-orange-200 hover:border-orange-400 transition-all duration-300 hover:scale-105"
-            >
-              <Image
-                src={`/images/terracotta/${filename}`}
-                alt={`Terracotta pot ${index + 1}`}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              />
-            </div>
-          ))}
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:gap-6">
+            {galleryImages.map((filename, index) => (
+              <div
+                key={index}
+                className="relative aspect-square overflow-hidden rounded-2xl border border-secondary-200 shadow-sm hover:shadow-md transition-shadow"
+              >
+                <Image
+                  src={`/images/terracotta/${filename}`}
+                  alt={`Terracotta pot ${index + 1}`}
+                  fill
+                  className="object-cover transition-transform duration-500 hover:scale-105"
+                  sizes="(max-width: 768px) 50vw, 33vw"
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="section-container bg-gradient-to-r from-orange-800 via-amber-800 to-yellow-800 text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-orange-900/30 to-transparent"></div>
-        <div className="max-w-3xl mx-auto text-center relative z-10">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 drop-shadow-lg">
-            Interesse in Terracotta Potten?
-          </h2>
-          <p className="text-xl mb-8 text-orange-50 drop-shadow-md">
-            Neem contact op voor meer informatie over onze collectie of om een afspraak te maken.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="px-8 py-4 bg-white text-orange-900 rounded-lg font-bold hover:bg-orange-50 transition-colors duration-200 shadow-lg hover:shadow-xl"
-            >
-              Neem Contact Op
-            </Link>
-            <Link
-              href="/wandeling"
-              className="px-8 py-4 bg-orange-600 text-white rounded-lg font-bold hover:bg-orange-700 transition-colors duration-200 shadow-lg hover:shadow-xl"
-            >
-              Bekijk de Tuin
-            </Link>
+      <section className="section-container pt-6">
+        <div className="rounded-[2.5rem] bg-secondary-800 px-6 py-10 text-secondary-50 shadow-botanical md:px-10">
+          <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-secondary-300">
+                Interesse?
+              </p>
+              <h2 className="mt-5 font-display text-4xl md:text-5xl">
+                Neem contact op voor meer informatie of een afspraak.
+              </h2>
+            </div>
+            <div className="flex flex-col gap-4 sm:flex-row lg:justify-end">
+              <Link
+                href="/wandeling"
+                className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-white hover:bg-white/20"
+              >
+                Bekijk de tuin
+              </Link>
+              <Link href="/contact" className="btn-secondary !bg-white !text-secondary-900 hover:!bg-secondary-50">
+                Neem contact op
+              </Link>
+            </div>
           </div>
         </div>
       </section>
     </div>
   );
 }
-

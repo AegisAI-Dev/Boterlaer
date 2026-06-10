@@ -11,14 +11,12 @@ const nextConfig = {
     unoptimized: true, // Schakel optimalisatie uit (essentieel voor Raspberry Pi prestaties/stabiliteit)
   },
   allowedDevOrigins: ['192.168.50.5', 'localhost'],
-  experimental: {
-    outputFileTracingExcludes: {
-      '*': [
-        'Media/**/*',
-        'public/images/**/*',
-        'public/videos/**/*'
-      ],
-    },
+  outputFileTracingExcludes: {
+    '*': [
+      'Media/**/*',
+      'public/images/**/*',
+      'public/videos/**/*'
+    ],
   },
   // Note: For App Router, body size limits are handled in route handlers
   // The upload route already handles 50MB files via FormData
