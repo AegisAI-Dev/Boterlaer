@@ -1,0 +1,302 @@
+"use client";
+
+import { useState, useEffect, FormEvent } from "react";
+import { useRouter, useParams } from "next/navigation";
+import Link from "next/link";
+import ImageUpload from "@/components/admin/ImageUpload";
+
+export default function EditPlantPage() {
+  const router = useRouter();
+  const params = useParams();
+  const id = params.id as string;
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [formData, setFormData] = useState({
+    commonName: "",
+    latinName: "",
+    description: "",
+    image: "",
+    category: "",
+    family: "",
+    origin: "",
+    floweringPeriod: "",
+    heightCm: "",
+    light: "",
+    locationCode: "",
+    beeFriendly: false,
+  });
+
+  useEffect(() => {
+    fetchPlant();
+  }, [id]);
+
+  const fetchPlant = async () => {
+    try {
+      const response = await fetch(`/api/plants/${id}`);
+      const plant = await response.json();
+      setFormData({
+        commonName: plant.commonName || "",
+        latinName: plant.latinName || "",
+        description: plant.description || "",
+        image: plant.image || "",
+        category: plant.category || "",
+        family: plant.family || "",
+        origin: plant.origin || "",
+        floweringPeriod: plant.floweringPeriod || "",
+        heightCm: plant.heightCm?.toString() || "",
+        light: plant.light || "",
+        locationCode: plant.locationCode || "",
+        beeFriendly: plant.beeFriendly || false,
+      });
+    } catch (error) {
+      console.error("Failed to fetch plant:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
+    const { name, value, type } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === "checkbox" ? (e.target as HTMLInputElement).checked : value,
+    }));
+  };
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const plantData = {
+        ...formData,
+        heightCm: parseInt(formData.heightCm) || 0,
+      };
+
+      const response = await fetch(`/api/plants/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(plantData),
+      });
+
+      if (response.ok) {
+        router.push("/admin/plants");
+      } else {
+        alert("Fout bij bijwerken van plant");
+      }
+    } catch (error) {
+      console.error("Failed to update plant:", error);
+      alert("Fout bij bijwerken van plant");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  if (loading) {
+    return <div>Laden...</div>;
+  }
+
+  return (
+    <div>
+      <div className="mb-8">
+        <Link
+          href="/admin/plants"
+          className="text-primary-600 hover:text-primary-700 mb-4 inline-block"
+        >
+          ← Terug naar Planten
+        </Link>
+        <h1 className="heading-2 text-accent mb-2">Plant Bewerken</h1>
+      </div>
+
+      <div className="card bg-white p-8">
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Nederlandse Naam *
+              </label>
+              <input
+                type="text"
+                name="commonName"
+                value={formData.commonName}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                required
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Latijnse Naam *
+              </label>
+              <input
+                type="text"
+                name="latinName"
+                value={formData.latinName}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                required
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Categorie *
+              </label>
+              <input
+                type="text"
+                name="category"
+                value={formData.category}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                required
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Familie
+              </label>
+              <input
+                type="text"
+                name="family"
+                value={formData.family}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                placeholder="bijv. Rosaceae, Asteraceae"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Oorsprong
+              </label>
+              <input
+                type="text"
+                name="origin"
+                value={formData.origin}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                placeholder="bijv. Europa, Azië, Noord-Amerika"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Bloeiperiode
+              </label>
+              <input
+                type="text"
+                name="floweringPeriod"
+                value={formData.floweringPeriod}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Hoogte (cm)
+              </label>
+              <input
+                type="number"
+                name="heightCm"
+                value={formData.heightCm}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Licht
+              </label>
+              <select
+                name="light"
+                value={formData.light}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+              >
+                <option value="">Selecteer...</option>
+                <option value="zon">Zon</option>
+                <option value="half schaduw">Half Schaduw</option>
+                <option value="schaduw">Schaduw</option>
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Locatie Code
+              </label>
+              <input
+                type="text"
+                name="locationCode"
+                value={formData.locationCode}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+              />
+            </div>
+
+            <div className="md:col-span-2">
+              <ImageUpload
+                value={formData.image}
+                onChange={(path) => setFormData((prev) => ({ ...prev, image: path }))}
+                category="plants"
+                label="Afbeelding"
+                required
+              />
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Beschrijving *
+            </label>
+            <textarea
+              name="description"
+              value={formData.description}
+              onChange={handleChange}
+              rows={6}
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+              required
+            />
+          </div>
+
+          <div>
+            <label className="flex items-center space-x-2">
+              <input
+                type="checkbox"
+                name="beeFriendly"
+                checked={formData.beeFriendly}
+                onChange={handleChange}
+                className="w-4 h-4 text-primary-600 border-gray-300 rounded focus:ring-primary-500"
+              />
+              <span className="text-sm font-medium text-gray-700">
+                Bij-vriendelijk
+              </span>
+            </label>
+          </div>
+
+          <div className="flex space-x-4">
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="btn-primary disabled:opacity-50"
+            >
+              {isSubmitting ? "Opslaan..." : "Wijzigingen Opslaan"}
+            </button>
+            <Link
+              href="/admin/plants"
+              className="px-6 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+            >
+              Annuleren
+            </Link>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+}
+

@@ -1,0 +1,34 @@
+{
+  "site": {
+    "name": "Botanische Tuin Den Boterlaer",
+    "description": "Dit is een privé hobbyproject waarin ik mijn passie voor planten en natuur deel via dit online platform.\nHeeft u interesse in een plant die u hier ziet, aarzel dan niet om mij te contacteren via e-mail voor meer informatie.\n\nNaast planten ben ik ook actief als imker. Wie interesse heeft in lokale honing, mag mij eveneens vrijblijvend mailen.",
+    "tagline": "Privé Hobbytuin"
+  },
+  "contact": {
+    "address": {
+      "name": "Botanische Tuin Den Boterlaer",
+      "street": "Boterlaar baan",
+      "city": "2100 Deurne",
+      "country": "België"
+    },
+    "email": "botanischetuin2100@gmail.com",
+    "phone": "",
+    "note": "Enkel Via Mail Bereikbaar "
+  },
+  "social": {
+    "facebook": "https://facebook.com",
+    "instagram": "https://instagram.com",
+    "twitter": "",
+    "youtube": ""
+  },
+  "seo": {
+    "keywords": [
+      "botanische tuin",
+      "planten",
+      "hobbytuin",
+      "plantencollectie",
+      "tuinieren"
+    ],
+    "author": "Den Boterlaer"
+  }
+}

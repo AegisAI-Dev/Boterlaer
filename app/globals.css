@@ -1,0 +1,200 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --garden-forest: #1e3a2f;
+    --garden-moss: #556b2f;
+    --garden-sage: #a8bba2;
+    --garden-cream: #f8f5ec;
+    --garden-terracotta: #c86b4a;
+    --garden-gold: #d4af37;
+    --garden-ink: #233129;
+    --garden-line: rgba(30, 58, 47, 0.14);
+  }
+
+  html {
+    background: var(--garden-cream);
+  }
+
+  body {
+    font-family: var(--font-sans), system-ui, sans-serif;
+    color: var(--garden-ink);
+    background:
+      url("/images/ui/garden-pattern.svg"),
+      radial-gradient(circle at top left, rgba(168, 187, 162, 0.42), transparent 30%),
+      radial-gradient(circle at top right, rgba(200, 107, 74, 0.12), transparent 22%),
+      linear-gradient(180deg, rgba(251, 248, 240, 0.74) 0%, rgba(248, 245, 236, 0.62) 38%, rgba(242, 237, 224, 0.74) 100%),
+      url("/images/ui/achtergrond.png");
+    background-repeat: repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+    background-size: 920px 920px, auto, auto, auto, cover;
+    background-position: 0 0, top left, top right, top, center;
+    background-attachment: scroll, scroll, scroll, scroll, fixed;
+    min-height: 100vh;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display), Georgia, serif;
+    letter-spacing: -0.025em;
+  }
+
+  a,
+  button,
+  input,
+  textarea,
+  select {
+    transition:
+      color 180ms ease,
+      background-color 180ms ease,
+      border-color 180ms ease,
+      box-shadow 180ms ease,
+      transform 180ms ease;
+  }
+
+  *:focus-visible {
+    outline: 2px solid rgba(212, 175, 55, 0.95);
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background: rgba(212, 175, 55, 0.22);
+    color: var(--garden-forest);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .garden-shell {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .garden-shell::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(to right, rgba(30, 58, 47, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(30, 58, 47, 0.04) 1px, transparent 1px);
+    background-size: 72px 72px;
+    opacity: 0.45;
+    pointer-events: none;
+    z-index: -2;
+  }
+
+  .paper-grain {
+    position: relative;
+  }
+
+  .paper-grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      radial-gradient(rgba(35, 49, 41, 0.08) 0.6px, transparent 0.6px),
+      radial-gradient(rgba(35, 49, 41, 0.04) 0.5px, transparent 0.5px);
+    background-position: 0 0, 18px 18px;
+    background-size: 22px 22px, 24px 24px;
+    opacity: 0.24;
+    mix-blend-mode: multiply;
+  }
+
+  .botanical-divider {
+    height: 1px;
+    width: 100%;
+    background:
+      linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(30, 58, 47, 0.1) 12%,
+        rgba(212, 175, 55, 0.5) 50%,
+        rgba(30, 58, 47, 0.1) 88%,
+        transparent 100%
+      );
+  }
+
+  .map-pin::before {
+    content: "";
+    position: absolute;
+    left: -0.85rem;
+    top: 1rem;
+    height: calc(100% - 2rem);
+    width: 1px;
+    background:
+      linear-gradient(180deg, rgba(212, 175, 55, 0.85), rgba(85, 107, 47, 0.25));
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-full border border-botanical-forest bg-botanical-forest px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-botanical-cream shadow-botanical hover:-translate-y-0.5 hover:bg-botanical-moss;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-full border border-secondary-500 bg-secondary-500 px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-botanical-cream shadow-botanical hover:-translate-y-0.5 hover:bg-secondary-600;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center rounded-full border border-botanical-forest/20 bg-white/60 px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-botanical-forest shadow-paper backdrop-blur-sm hover:-translate-y-0.5 hover:border-botanical-gold hover:bg-white;
+  }
+
+  .section-container {
+    @apply mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 md:py-20 lg:px-8 lg:py-24;
+  }
+
+  .card {
+    @apply rounded-[2rem] border border-botanical-forest/10 bg-white/70 shadow-paper backdrop-blur-sm;
+  }
+
+  .heading-1 {
+    @apply font-display text-5xl leading-none text-botanical-forest md:text-6xl lg:text-7xl;
+  }
+
+  .heading-2 {
+    @apply font-display text-4xl leading-tight text-botanical-forest md:text-5xl lg:text-6xl;
+  }
+
+  .heading-3 {
+    @apply font-display text-3xl leading-tight text-botanical-forest md:text-4xl;
+  }
+
+  .prose-custom {
+    @apply text-base leading-8 text-botanical-ink md:text-lg;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.28em] text-botanical-moss;
+  }
+
+  .eyebrow::before {
+    content: "";
+    @apply inline-block h-px w-10 bg-botanical-gold;
+  }
+
+  .paper-panel {
+    @apply paper-grain relative overflow-hidden rounded-[2rem] border border-botanical-forest/10 bg-paper shadow-paper;
+  }
+
+  .botanical-panel {
+    @apply rounded-[2rem] border border-botanical-forest/10 bg-white/70 shadow-paper backdrop-blur-sm;
+  }
+
+  .garden-link {
+    @apply inline-flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.16em] text-botanical-forest;
+  }
+
+  .garden-link::after {
+    content: "→";
+    @apply text-botanical-gold;
+  }
+}

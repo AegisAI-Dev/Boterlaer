@@ -1,0 +1,7 @@
+# Allow all robots
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://yourdomain.com/sitemap.xml
+

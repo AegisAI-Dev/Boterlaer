@@ -1,0 +1,96 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "windows", "debian-openssl-1.1.x", "debian-openssl-3.0.x", "linux-arm64-openssl-1.1.x", "linux-arm64-openssl-3.0.x"]
+  engineType    = "binary"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Photo {
+  id          Int       @id @default(autoincrement())
+  filename    String
+  path        String
+  alt         String?
+  title       String?
+  description String?
+  category    String?
+  tags        String?
+  width       Int?
+  height      Int?
+  size        Int?
+  takenAt     DateTime?
+  uploadedAt  DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  isPublic    Boolean   @default(true)
+  order       Int?
+  plantId     Int?
+  blogPostId  Int?
+  blogPost    BlogPost? @relation(fields: [blogPostId], references: [id])
+  plant       Plant?    @relation(fields: [plantId], references: [id])
+
+  @@index([category])
+  @@index([isPublic])
+  @@index([uploadedAt])
+  @@index([plantId])
+  @@index([blogPostId])
+  @@map("photos")
+}
+
+model Plant {
+  id              Int      @id @default(autoincrement())
+  commonName      String
+  latinName       String
+  description     String?
+  category        String?
+  family          String?
+  origin          String?
+  floweringPeriod String?
+  heightCm        Int?
+  light           String?
+  locationCode    String?
+  beeFriendly     Boolean  @default(false)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  photos          Photo[]
+
+  @@index([category])
+  @@index([locationCode])
+  @@map("plants")
+}
+
+model BlogPost {
+  id        Int      @id @default(autoincrement())
+  slug      String   @unique
+  title     String
+  date      DateTime
+  author    String
+  teaser    String
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  photos    Photo[]
+
+  @@index([date])
+  @@map("blog_posts")
+}
+
+model Video {
+  id          Int      @id @default(autoincrement())
+  filename    String   @unique
+  path        String
+  title       String?
+  description String?
+  size        Int?
+  page        String   @default("general")
+  isActive    Boolean  @default(true)
+  uploadedAt  DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([page])
+  @@index([isActive])
+  @@index([uploadedAt])
+  @@map("videos")
+}
