@@ -27,10 +27,10 @@ const Navbar = () => {
           <Link href="/" className="group flex min-w-0 items-center gap-4">
             <div className="relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-full border border-botanical-forest/15 bg-transparent shadow-paper">
               <Image
-                src="/images/ui/bannericon2-centered.png"
+                src="/images/ui/bannericon2-cropped.png"
                 alt="Den Boterlaer banner icoon"
                 fill
-                className="object-cover"
+                className="object-cover scale-[1.6]"
                 sizes="48px"
                 priority
               />
